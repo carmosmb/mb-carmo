@@ -339,7 +339,16 @@
 
             <!-- About -->
             <div id="section-about" class="section active">
-                <p class="about-text">I'm a Master of Urban Planning student at Pratt Institute's School of Architecture, where studying planning within a design school — and an art and design school at that — has given me a strong grounding in urban design alongside the analytical and policy side of the field. My focus is on housing policy, municipal finance, and land use — using tools like Python, GeoPandas, and ArcGIS to ask questions about affordability, development patterns, and how cities allocate resources. I'm particularly interested in transit oriented development, downtown revitalization, and the craft of physical planning: how master plans shape the long arc of a city's growth and what it takes to translate policy into built form. I'm drawn to work that lives at the boundary between rigorous analysis and spatial design: parcel-level data, geospatial visualization, policy research that actually has something to say. I believe good data and good design can make planning more legible — and more equitable. When I'm not deep in a dataset, I'm thinking about architecture, sketching, or riding bikes on gravel roads that probably weren't meant for bikes.</p>
+                <p class="about-text">I'm a Master of Urban Planning student at Pratt Institute's School of Architecture, 
+                    where studying planning within a design school has given me a strong grounding in urban design alongside 
+                    the analytical and policy side of the field. My focus is on housing policy, municipal finance, 
+                    and land use — using data analysis tools to ask questions about affordability, development patterns, 
+                    and how cities allocate resources. I'm particularly interested in transit oriented development, 
+                    downtown revitalization, and the craft of physical planning: how master plans shape the long arc of a city's growth 
+                    and what it takes to translate policy into built form. I'm drawn to work that lives at the 
+                    boundary between rigorous analysis and spatial design: parcel-level data, geospatial visualization, 
+                    policy research that actually has something to say. I believe good data and good design can make planning more legible 
+                    and more equitable. When I'm not deep in a dataset, I'm thinking about architecture, watching or doing woodworking projects, and riding my bike through the city and on gravel roads that probably weren't meant for bikes.</p>
             </div>
 
             <!-- Work -->
@@ -353,7 +362,22 @@
                         </div>
                         <div class="work-item-info">
                             <h3>Fiscal Impact Analysis</h3>
-                            <p>This fiscal impact analysis examines a proposed housing development on the site of a former college campus, projecting tax revenue, municipal service costs, and net fiscal outcomes for the host municipality while accounting for New York State's STAR (School Tax Relief) program. Names and locations have been changed for confidentiality. </p>
+                            <p>This fiscal impact analysis examines a proposed housing development on the site of a former college campus,
+                                projecting tax revenue, municipal service costs, and net fiscal outcomes for the host municipality while
+                                accounting for New York State's STAR (School Tax Relief) program. Names and locations have been changed for confidentiality. </p>
+                        </div>
+                    </div>
+
+                    <div class="work-item" onclick="openModal('modal-walkshed')">
+                        <div class="work-thumb">
+                            <img src="samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg" alt="Rockaway Peninsula Walkshed Map">
+                        </div>
+                        <div class="work-item-info">
+                            <h3>Rockaway Peninsula Transit Access</h3>
+                            <p>A GIS analysis identifying vacant lots within a 0.5-mile walkshed and 0.5-mile Euclidean buffer of
+                                subway stations along the Rockaway Peninsula and Broad Channel. The comparison between network-based
+                                and straight-line catchment areas reveals meaningful differences in which parcels are realistically
+                                accessible to transit, implications for where TOD investment is most viable.</p>
                         </div>
                     </div>
 
@@ -364,16 +388,6 @@
                         <div class="work-item-info">
                             <h3>East 12th Street Section View</h3>
                             <p>Street design study in the East Village, NYC. Hand-drawn then touched up in Adobe Illustrator. </p>
-                        </div>
-                    </div>
-
-                    <div class="work-item" onclick="openModal('modal-walkshed')">
-                        <div class="work-thumb">
-                            <img src="samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg" alt="Rockaway Peninsula Walkshed Map">
-                        </div>
-                        <div class="work-item-info">
-                            <h3>Rockaway Peninsula Transit Access</h3>
-                            <p>A GIS analysis identifying vacant lots within a 0.5-mile walkshed and 0.5-mile Euclidean buffer of subway stations along the Rockaway Peninsula and Broad Channel. The comparison between network-based and straight-line catchment areas reveals meaningful differences in which parcels are realistically accessible to transit — with implications for where TOD investment is most viable.</p>
                         </div>
                     </div>
 
@@ -421,7 +435,7 @@
             <button class="modal-close" onclick="closeModal('modal-fiscal')">&times;</button>
             <iframe src="samples/fiscal_impact.pdf" title="Fiscal Impact Analysis"></iframe>
             <div class="modal-caption">
-                <h3>School Fiscal Impacts of Shiodome College Redevelopment, Greenlee, NY</h3>
+                <h3>Fiscal Impact Analysis of Housing Redevelopment</h3>
                 <p>Fiscal impact analysis projecting $1.24M net positive impact on the Greenlee Central School District from a 72-unit mixed housing development. Prepared for Stanley County Citizens for Social Responsibility, November 2025.</p>
             </div>
         </div>
