@@ -16,7 +16,7 @@
             line-height: 1.6;
             color: #000;
             background: #fff;
-            font-size: 14px;
+            font-size: 19px;
         }
 
         /* Layout */
@@ -39,10 +39,11 @@
         }
 
         .site-name {
-            font-size: 15px;
+            font-size: 20px;
             font-weight: 700;
             letter-spacing: 0.3px;
             margin-bottom: 40px;
+            white-space: nowrap;
         }
 
         nav {
@@ -54,7 +55,7 @@
         nav a {
             color: #aaa;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 20px;
             font-weight: 400;
             cursor: pointer;
             transition: color 0.2s;
@@ -70,7 +71,7 @@
 
         .sidebar-footer {
             margin-top: auto;
-            font-size: 12px;
+            font-size: 17px;
             color: #aaa;
         }
 
@@ -103,10 +104,12 @@
 
         /* About */
         .about-text {
-            font-size: 14px;
+            font-size: 19px;
             line-height: 1.8;
             max-width: 680px;
             letter-spacing: 0.3px;
+            text-align: center;
+            margin: 0 auto;
         }
 
         /* Work */
@@ -174,12 +177,12 @@
         }
 
         .work-item-info h3 {
-            font-size: 14px;
+            font-size: 19px;
             font-weight: 500;
         }
 
         .work-item-info p {
-            font-size: 13px;
+            font-size: 18px;
             font-weight: 400;
             color: #666;
         }
@@ -189,7 +192,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            font-size: 14px;
+            font-size: 19px;
         }
 
         .contact-list a {
@@ -262,12 +265,12 @@
         }
 
         .modal-caption h3 {
-            font-size: 14px;
+            font-size: 19px;
             font-weight: 500;
         }
 
         .modal-caption p {
-            font-size: 13px;
+            font-size: 18px;
             color: #666;
             margin-top: 4px;
             line-height: 1.6;
@@ -328,11 +331,12 @@
             <nav>
                 <a href="#" class="active" onclick="showSection('about', this)">about</a>
                 <a href="#" onclick="showSection('work', this)">work</a>
+                <a href="#" onclick="showSection('resume', this)">resume</a>
                 <a href="#" onclick="showSection('contact', this)">contact</a>
             </nav>
-            <div class="sidebar-footer">
+<!--             <div class="sidebar-footer">
                 <a href="mailto:your.email@example.com">your.email@example.com</a>
-            </div>
+            </div> -->
         </aside>
 
         <main class="content">
@@ -394,6 +398,11 @@
                 </div>
             </div>
 
+            <!-- Resume -->
+            <div id="section-resume" class="section">
+                <iframe src="samples/resume.pdf" style="width:100%; height:85vh; border:none; display:block;"></iframe>
+            </div>
+
             <!-- Contact -->
             <div id="section-contact" class="section">
                 <div class="contact-list">
@@ -410,10 +419,6 @@
         <div class="modal-inner">
             <button class="modal-close" onclick="closeModal('modal-section')">&times;</button>
             <img src="samples/Section_View.png" alt="East 12th Street Section View">
-            <div class="modal-caption">
-                <h3>East 12th Street Section View: Avenue A to Avenue B</h3>
-                <p>As part of my studies, I developed a section view of a street in the East Village for a potential redesign of street use. Beginning with a hand-drawn section view of the study area, I then digitized it with InDesign and made a 3D model of the surrounding area with SketchUp.</p>
-            </div>
         </div>
     </div>
 
@@ -422,10 +427,6 @@
         <div class="modal-inner">
             <button class="modal-close" onclick="closeModal('modal-walkshed')">&times;</button>
             <img src="samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg" alt="Rockaway Peninsula Walkshed Map">
-            <div class="modal-caption">
-                <h3>Vacant Lots Within a 0.5 Mile Walkshed and 0.5 Mile Euclidean Buffer of Subway Stations</h3>
-                <p>GIS analysis mapping vacant development lots relative to subway station walksheds across Broad Channel and the Rockaway Peninsula, produced at Pratt GCPE.</p>
-            </div>
         </div>
     </div>
 
@@ -434,10 +435,6 @@
         <div class="modal-inner">
             <button class="modal-close" onclick="closeModal('modal-fiscal')">&times;</button>
             <iframe src="samples/fiscal_impact.pdf" title="Fiscal Impact Analysis"></iframe>
-            <div class="modal-caption">
-                <h3>Fiscal Impact Analysis of Housing Redevelopment</h3>
-                <p>Fiscal impact analysis projecting $1.24M net positive impact on the Greenlee Central School District from a 72-unit mixed housing development. Prepared for Stanley County Citizens for Social Responsibility, November 2025.</p>
-            </div>
         </div>
     </div>
 
