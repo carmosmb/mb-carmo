@@ -110,54 +110,75 @@
         }
 
         /* Work */
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 40px;
-            margin-top: 10px;
+        .work-list {
+            display: flex;
+            flex-direction: column;
         }
 
         .work-item {
+            display: flex;
+            gap: 28px;
+            padding: 20px 0;
+            border-bottom: 1px solid #e8e8e8;
             cursor: pointer;
-        }
-
-        .work-item img {
-            width: 100%;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-            display: block;
-            filter: grayscale(0%);
+            align-items: flex-start;
             transition: opacity 0.2s;
         }
 
-        .work-item:hover img {
-            opacity: 0.85;
+        .work-item:first-child {
+            border-top: 1px solid #e8e8e8;
         }
 
-        .work-item-placeholder {
-            width: 100%;
-            aspect-ratio: 4/3;
+        .work-item:hover {
+            opacity: 0.65;
+        }
+
+        .work-thumb {
+            width: 180px;
+            height: 135px;
+            flex-shrink: 0;
+            overflow: hidden;
             background: #f0f0f0;
+        }
+
+        .work-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .work-thumb-pdf {
+            width: 180px;
+            height: 135px;
+            flex-shrink: 0;
+            overflow: hidden;
+            background: #f0f0f0;
+            position: relative;
+        }
+
+        .work-thumb-pdf iframe {
+            width: 900px;
+            height: 675px;
+            transform: scale(0.2);
+            transform-origin: top left;
+            pointer-events: none;
+            border: none;
+        }
+
+        .work-item-info {
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
-            gap: 8px;
-            color: #999;
-            font-size: 13px;
+            justify-content: center;
+            gap: 4px;
         }
 
-        .work-item-label {
-            margin-top: 12px;
-        }
-
-        .work-item-label h3 {
+        .work-item-info h3 {
             font-size: 14px;
             font-weight: 500;
-            margin-bottom: 3px;
         }
 
-        .work-item-label p {
+        .work-item-info p {
             font-size: 13px;
             font-weight: 400;
             color: #666;
@@ -288,8 +309,10 @@
                 padding: 20px 30px 60px;
             }
 
-            .work-grid {
-                grid-template-columns: 1fr;
+            .work-thumb,
+            .work-thumb-pdf {
+                width: 120px;
+                height: 90px;
             }
 
             .modal {
@@ -321,39 +344,34 @@
 
             <!-- Work -->
             <div id="section-work" class="section">
-                <div class="work-grid">
+                <div class="work-list">
 
                     <div class="work-item" onclick="openModal('modal-section')">
-                        <img src="samples/Section_View.png" alt="East 12th Street Section View"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="work-item-placeholder" style="display:none;">image not found</div>
-                        <div class="work-item-label">
+                        <div class="work-thumb">
+                            <img src="samples/Section_View.png" alt="East 12th Street Section View">
+                        </div>
+                        <div class="work-item-info">
                             <h3>East 12th Street Section View</h3>
                             <p>Street design study — East Village, NYC</p>
                         </div>
                     </div>
 
                     <div class="work-item" onclick="openModal('modal-walkshed')">
-                        <img src="samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg" alt="Rockaway Peninsula Walkshed Map"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="work-item-placeholder" style="display:none;">image not found</div>
-                        <div class="work-item-label">
+                        <div class="work-thumb">
+                            <img src="samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg" alt="Rockaway Peninsula Walkshed Map">
+                        </div>
+                        <div class="work-item-info">
                             <h3>Rockaway Peninsula Transit Access</h3>
                             <p>GIS walkshed analysis — Broad Channel &amp; Rockaway Peninsula</p>
                         </div>
                     </div>
 
                     <div class="work-item" onclick="openModal('modal-fiscal')">
-                        <div class="work-item-placeholder" style="display:flex;">
-                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14 2 14 8 20 8"/>
-                                <line x1="16" y1="13" x2="8" y2="13"/>
-                                <line x1="16" y1="17" x2="8" y2="17"/>
-                            </svg>
-                            <span style="margin-top:8px;">Fiscal Impact Report (PDF)</span>
+                        <div class="work-thumb-pdf">
+                            <iframe src="samples/fiscal_impact.pdf#toolbar=0&navpanes=0&scrollbar=0&page=1"
+                                    title="Fiscal Impact Preview"></iframe>
                         </div>
-                        <div class="work-item-label">
+                        <div class="work-item-info">
                             <h3>Shiodome College Redevelopment</h3>
                             <p>School fiscal impact analysis — Greenlee, NY</p>
                         </div>
@@ -365,8 +383,8 @@
             <!-- Contact -->
             <div id="section-contact" class="section">
                 <div class="contact-list">
-                    <a href="mailto:your.email@example.com">your.email@example.com</a>
-                    <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin</a>
+                    <a href="mailto:mcarmosi@pratt.edu">mcarmosi@pratt.edu</a>
+                    <a href="https://linkedin.com/in/matthew-carmosino/" target="_blank">linkedin</a>
                 </div>
             </div>
 
