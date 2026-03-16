@@ -16,100 +16,122 @@
             line-height: 1.6;
             color: #000;
             background: #fff;
+            font-size: 14px;
         }
 
-        header {
+        /* Layout */
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            padding: 40px 40px 40px 40px;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            padding: 30px 50px;
-            background: #fff;
-            z-index: 1000;
-            border-bottom: 1px solid #000;
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
         }
 
-        .name {
-            font-size: 18px;
+        .site-name {
+            font-size: 15px;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+            margin-bottom: 40px;
         }
 
-        .contact-links {
+        nav {
             display: flex;
-            gap: 20px;
-            align-items: center;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        .contact-links a {
-            color: #000;
+        nav a {
+            color: #aaa;
             text-decoration: none;
-            font-size: 14px;
-            transition: opacity 0.3s;
-        }
-
-        .contact-links a:hover {
-            opacity: 0.6;
-        }
-
-        .contact-links svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        main {
-            margin-top: 100px;
-            padding: 0 50px 100px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        section {
-            margin-bottom: 150px;
-        }
-
-        section:first-child {
-            margin-top: 60px;
-        }
-
-        h2 {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
+            cursor: pointer;
+            transition: color 0.2s;
         }
 
-        .about-content {
+        nav a:hover {
+            color: #000;
+        }
+
+        nav a.active {
+            color: #000;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .sidebar-footer a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .sidebar-footer a:hover {
+            color: #000;
+        }
+
+        /* Main content */
+        .content {
+            margin-left: 260px;
+            padding: 40px 60px 80px 60px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            padding-top: 4px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* About */
+        .about-text {
             font-size: 14px;
-            font-weight: 300;
             line-height: 1.8;
-            max-width: 800px;
+            max-width: 680px;
+            letter-spacing: 0.3px;
         }
 
+        /* Work */
         .work-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 50px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 40px;
+            margin-top: 10px;
         }
 
         .work-item {
-            border: 1px solid #000;
             cursor: pointer;
-            overflow: hidden;
-            position: relative;
         }
 
         .work-item img {
             width: 100%;
-            display: block;
             aspect-ratio: 4/3;
             object-fit: cover;
+            display: block;
+            filter: grayscale(0%);
+            transition: opacity 0.2s;
+        }
+
+        .work-item:hover img {
+            opacity: 0.85;
         }
 
         .work-item-placeholder {
@@ -119,43 +141,46 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            gap: 8px;
             color: #999;
             font-size: 13px;
         }
 
-        .work-item-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #fff;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .work-item:hover .work-item-overlay {
-            transform: translateY(0);
-        }
-
         .work-item-label {
-            padding: 15px 20px;
-            border-top: 1px solid #000;
+            margin-top: 12px;
         }
 
         .work-item-label h3 {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .work-item-label p {
             font-size: 13px;
-            font-weight: 300;
+            font-weight: 400;
             color: #666;
         }
 
-        /* Modal / Lightbox */
+        /* Contact */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .contact-list a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .contact-list a:hover {
+            opacity: 0.5;
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -181,26 +206,26 @@
 
         .modal-inner img {
             width: 100%;
-            max-height: 85vh;
+            max-height: 80vh;
             object-fit: contain;
             display: block;
         }
 
         .modal-inner iframe {
             width: 100%;
-            height: 85vh;
+            height: 80vh;
             border: none;
             display: block;
         }
 
         .modal-close {
             position: absolute;
-            top: -40px;
+            top: -36px;
             right: 0;
             background: none;
             border: none;
             color: #fff;
-            font-size: 28px;
+            font-size: 26px;
             cursor: pointer;
             line-height: 1;
             padding: 4px 8px;
@@ -212,42 +237,59 @@
 
         .modal-caption {
             padding: 14px 20px;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid #e0e0e0;
         }
 
         .modal-caption h3 {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
         }
 
         .modal-caption p {
             font-size: 13px;
-            font-weight: 300;
             color: #666;
             margin-top: 4px;
+            line-height: 1.6;
         }
 
-        @media (max-width: 768px) {
-            header {
-                padding: 20px 30px;
+        /* Mobile */
+        @media (max-width: 700px) {
+            .layout {
+                flex-direction: column;
             }
 
-            main {
-                padding: 0 30px 50px;
-                margin-top: 80px;
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 30px 30px 20px;
+                flex-direction: row;
+                align-items: baseline;
+                gap: 30px;
+                flex-wrap: wrap;
             }
 
-            .about-content {
-                font-size: 14px;
+            .site-name {
+                margin-bottom: 0;
+                width: 100%;
+            }
+
+            nav {
+                flex-direction: row;
+                gap: 20px;
+            }
+
+            .sidebar-footer {
+                display: none;
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 20px 30px 60px;
             }
 
             .work-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            section {
-                margin-bottom: 100px;
             }
 
             .modal {
@@ -257,72 +299,79 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="name">matthew-carmosino</div>
-        <div class="contact-links">
-            <a href="mailto:your.email@example.com">email</a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-            </a>
-        </div>
-    </header>
-
-    <main>
-        <section id="about">
-            <h2>About</h2>
-            <div class="about-content">
-                <p>Welcome! I am Matthew Carmosino, a Vanderbilt University graduate
-                    currently pursuing a Master's Degree in Urban Planning at
-                    Pratt Institute in Brooklyn, New York.</p>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="site-name">matthew-carmosino</div>
+            <nav>
+                <a href="#" class="active" onclick="showSection('about', this)">about</a>
+                <a href="#" onclick="showSection('work', this)">work</a>
+                <a href="#" onclick="showSection('contact', this)">contact</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="mailto:your.email@example.com">your.email@example.com</a>
             </div>
-        </section>
+        </aside>
 
-        <section id="work">
-            <h2>Work</h2>
-            <div class="work-grid">
+        <main class="content">
 
-                <div class="work-item" onclick="openModal('modal-section')">
-                    <img src="samples/Section_View.png" alt="East 12th Street Section View"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="work-item-placeholder" style="display:none;">section-view.jpg not found</div>
-                    <div class="work-item-label">
-                        <h3>East 12th Street Section View</h3>
-                        <p>Street design study — East Village, NYC</p>
-                    </div>
-                </div>
-
-                <div class="work-item" onclick="openModal('modal-walkshed')">
-                    <img src="samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg" alt="Rockaway Peninsula Walkshed Map"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="work-item-placeholder" style="display:none;">samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg not found</div>
-                    <div class="work-item-label">
-                        <h3>Rockaway Peninsula Transit Access</h3>
-                        <p>GIS walkshed analysis — Broad Channel &amp; Rockaway Peninsula</p>
-                    </div>
-                </div>
-
-                <div class="work-item" onclick="openModal('modal-fiscal')">
-                    <div class="work-item-placeholder" style="display:flex; flex-direction:column; gap:8px;">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                        <span>Fiscal Impact Report (PDF)</span>
-                    </div>
-                    <div class="work-item-label">
-                        <h3>Shiodome College Redevelopment</h3>
-                        <p>School fiscal impact analysis — Greenlee, NY</p>
-                    </div>
-                </div>
-
+            <!-- About -->
+            <div id="section-about" class="section active">
+                <p class="about-text">I'm a Master of Urban Planning student at Pratt Institute's School of Architecture, where studying planning within a design school — and an art and design school at that — has given me a strong grounding in urban design alongside the analytical and policy side of the field. My focus is on housing policy, municipal finance, and land use — using tools like Python, GeoPandas, and ArcGIS to ask questions about affordability, development patterns, and how cities allocate resources. I'm particularly interested in transit oriented development, downtown revitalization, and the craft of physical planning: how master plans shape the long arc of a city's growth and what it takes to translate policy into built form. I'm drawn to work that lives at the boundary between rigorous analysis and spatial design: parcel-level data, geospatial visualization, policy research that actually has something to say. I believe good data and good design can make planning more legible — and more equitable. When I'm not deep in a dataset, I'm thinking about architecture, sketching, or riding bikes on gravel roads that probably weren't meant for bikes.</p>
             </div>
-        </section>
-    </main>
+
+            <!-- Work -->
+            <div id="section-work" class="section">
+                <div class="work-grid">
+
+                    <div class="work-item" onclick="openModal('modal-section')">
+                        <img src="samples/Section_View.png" alt="East 12th Street Section View"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="work-item-placeholder" style="display:none;">image not found</div>
+                        <div class="work-item-label">
+                            <h3>East 12th Street Section View</h3>
+                            <p>Street design study — East Village, NYC</p>
+                        </div>
+                    </div>
+
+                    <div class="work-item" onclick="openModal('modal-walkshed')">
+                        <img src="samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg" alt="Rockaway Peninsula Walkshed Map"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="work-item-placeholder" style="display:none;">image not found</div>
+                        <div class="work-item-label">
+                            <h3>Rockaway Peninsula Transit Access</h3>
+                            <p>GIS walkshed analysis — Broad Channel &amp; Rockaway Peninsula</p>
+                        </div>
+                    </div>
+
+                    <div class="work-item" onclick="openModal('modal-fiscal')">
+                        <div class="work-item-placeholder" style="display:flex;">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                            <span style="margin-top:8px;">Fiscal Impact Report (PDF)</span>
+                        </div>
+                        <div class="work-item-label">
+                            <h3>Shiodome College Redevelopment</h3>
+                            <p>School fiscal impact analysis — Greenlee, NY</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div id="section-contact" class="section">
+                <div class="contact-list">
+                    <a href="mailto:your.email@example.com">your.email@example.com</a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin</a>
+                </div>
+            </div>
+
+        </main>
+    </div>
 
     <!-- Section View Modal -->
     <div id="modal-section" class="modal" onclick="closeOnBackdrop(event, 'modal-section')">
@@ -361,6 +410,14 @@
     </div>
 
     <script>
+        function showSection(name, el) {
+            event.preventDefault();
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            document.getElementById('section-' + name).classList.add('active');
+            el.classList.add('active');
+        }
+
         function openModal(id) {
             document.getElementById(id).classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -379,9 +436,7 @@
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                document.querySelectorAll('.modal.active').forEach(m => {
-                    m.classList.remove('active');
-                });
+                document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
                 document.body.style.overflow = '';
             }
         });
