@@ -404,6 +404,37 @@
                         </div>
                     </div>
 
+                    <div class="work-item" onclick="openModal('modal-chloros')">
+                        <div class="work-thumb-pdf">
+                            <iframe src="samples/Chloros.pdf#toolbar=0&navpanes=0&scrollbar=0&page=1"
+                                    title="Chloros Preview"></iframe>
+                        </div>
+                        <div class="work-item-info">
+                            <h3>Chloros</h3>
+                            <p>Add description here.</p>
+                        </div>
+                    </div>
+
+                    <div class="work-item" onclick="window.location.href='wood.html'">
+                        <div class="work-thumb">
+                            <img src="samples/wood/dryfit.jpeg" alt="Woodworking">
+                        </div>
+                        <div class="work-item-info">
+                            <h3>Woodworking</h3>
+                            <p>A selection of personal woodworking projects.</p>
+                        </div>
+                    </div>
+
+                    <div class="work-item" onclick="window.location.href='design_board.html'">
+                        <div class="work-thumb">
+                            <img src="samples/design_board/axonomorphic_scan.jpg" alt="Design Board">
+                        </div>
+                        <div class="work-item-info">
+                            <h3>Design Board</h3>
+                            <p>Studio design work from Pratt Institute — spatial studies, axonometric drawings, and visual research.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -444,6 +475,14 @@
         <div class="modal-inner">
             <button class="modal-close" onclick="closeModal('modal-fiscal')">&times;</button>
             <iframe src="samples/fiscal_impact.pdf" title="Fiscal Impact Analysis"></iframe>
+        </div>
+    </div>
+
+    <!-- Chloros Modal -->
+    <div id="modal-chloros" class="modal" onclick="closeOnBackdrop(event, 'modal-chloros')">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('modal-chloros')">&times;</button>
+            <iframe src="samples/Chloros.pdf" title="Chloros"></iframe>
         </div>
     </div>
 
