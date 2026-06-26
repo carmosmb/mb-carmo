@@ -416,13 +416,22 @@
                     </div>
 
                     <div class="work-item" onclick="openModal('modal-jcoped')">
-                        <div class="work-thumb-pdf">
-                            <iframe src="samples/jc_oped.pdf#toolbar=0&navpanes=0&scrollbar=0&page=1"
-                                    title="JC Op-Ed Preview"></iframe>
+                        <div class="work-thumb">
+                            <img src="samples/jc/jc_preview.png" alt="Jersey City Budget Op-Ed">
                         </div>
                         <div class="work-item-info">
                             <h3>Jersey City Budget Op-Ed</h3>
                             <p>An op-ed on Jersey City's municipal budget problems, written in early 2026.</p>
+                        </div>
+                    </div>
+
+                    <div class="work-item" onclick="openModal('modal-rhw')">
+                        <div class="work-thumb">
+                            <img src="samples/rhw/rhw_preview.png" alt="Red Hook West Community Visioning Report">
+                        </div>
+                        <div class="work-item-info">
+                            <h3>Red Hook West Community Visioning Report</h3>
+                            <p>Description.</p>
                         </div>
                     </div>
 
@@ -501,7 +510,15 @@
     <div id="modal-jcoped" class="modal" onclick="closeOnBackdrop(event, 'modal-jcoped')">
         <div class="modal-inner">
             <button class="modal-close" onclick="closeModal('modal-jcoped')">&times;</button>
-            <iframe src="samples/jc_oped.pdf" title="Jersey City Budget Op-Ed"></iframe>
+            <iframe src="samples/jc/jc_oped.pdf" title="Jersey City Budget Op-Ed"></iframe>
+        </div>
+    </div>
+
+    <!-- Red Hook West Modal -->
+    <div id="modal-rhw" class="modal" onclick="closeOnBackdrop(event, 'modal-rhw')">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('modal-rhw')">&times;</button>
+            <iframe src="samples/rhw/RHW-compressed.pdf" title="Red Hook West Community Visioning Report"></iframe>
         </div>
     </div>
 
