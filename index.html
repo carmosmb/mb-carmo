@@ -370,7 +370,7 @@
 
                     <div class="work-item" onclick="openModal('modal-fiscal')">
                         <div class="work-thumb-pdf">
-                            <iframe src="samples/fiscal_impact.pdf?v=fiscal#toolbar=0&navpanes=0&scrollbar=0&page=1"
+                            <iframe src="samples/fiscal_impact.pdf#toolbar=0&navpanes=0&scrollbar=0&page=1"
                                     title="Fiscal Impact Preview"></iframe>
                         </div>
                         <div class="work-item-info">
@@ -406,7 +406,7 @@
 
                     <div class="work-item" onclick="openModal('modal-njgis')">
                         <div class="work-thumb-pdf">
-                            <iframe src="samples/njgis.pdf?v=njgis#toolbar=0&navpanes=0&scrollbar=0&page=1"
+                            <iframe src="samples/njgis.pdf#toolbar=0&navpanes=0&scrollbar=0&page=1"
                                     title="NJ GIS Preview"></iframe>
                         </div>
                         <div class="work-item-info">
@@ -416,23 +416,13 @@
                     </div>
 
                     <div class="work-item" onclick="openModal('modal-jcoped')">
-                        <div class="work-thumb">
-                            <img src="samples/jc_preview.png" alt="Jersey City Budget Op-Ed">
+                        <div class="work-thumb-pdf">
+                            <iframe src="samples/jc_oped.pdf#toolbar=0&navpanes=0&scrollbar=0&page=1"
+                                    title="JC Op-Ed Preview"></iframe>
                         </div>
                         <div class="work-item-info">
                             <h3>Jersey City Budget Op-Ed</h3>
                             <p>An op-ed on Jersey City's municipal budget problems, written in early 2026.</p>
-                        </div>
-                    </div>
-
-                    <div class="work-item" onclick="openModal('modal-rhw')">
-                        <div class="work-thumb-pdf">
-                            <iframe src="samples/RHW-compressed.pdf"
-                                    title="Red Hook West Preview"></iframe>
-                        </div>
-                        <div class="work-item-info">
-                            <h3>Red Hook West Community Visioning Report</h3>
-                            <p>Description.</p>
                         </div>
                     </div>
 
@@ -504,14 +494,6 @@
         <div class="modal-inner">
             <button class="modal-close" onclick="closeModal('modal-njgis')">&times;</button>
             <iframe src="samples/njgis.pdf" title="NJ GIS Showcase"></iframe>
-        </div>
-    </div>
-
-    <!-- Red Hook West Modal -->
-    <div id="modal-rhw" class="modal" onclick="closeOnBackdrop(event, 'modal-rhw')">
-        <div class="modal-inner">
-            <button class="modal-close" onclick="closeModal('modal-rhw')">&times;</button>
-            <iframe src="samples/RHW-compressed.pdf" title="Red Hook West Community Visioning Report"></iframe>
         </div>
     </div>
 
