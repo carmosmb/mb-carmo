@@ -29,7 +29,7 @@
         .sidebar {
             width: 260px;
             flex-shrink: 0;
-            padding: 40px 40px 40px 40px;
+            padding: 40px;
             position: fixed;
             top: 0;
             left: 0;
@@ -61,10 +61,7 @@
             transition: color 0.2s;
         }
 
-        nav a:hover {
-            color: #000;
-        }
-
+        nav a:hover,
         nav a.active {
             color: #000;
         }
@@ -87,7 +84,7 @@
         /* Main content */
         .content {
             margin-left: 260px;
-            padding: 40px 60px 80px 60px;
+            padding: 40px 60px 80px;
             max-width: 900px;
             width: 100%;
         }
@@ -110,81 +107,75 @@
             letter-spacing: 0.3px;
             text-align: center;
             margin: 0 auto;
+            text-wrap: pretty;
         }
 
-        /* Work */
-        .work-list {
+        /* Work — index layout */
+        .work-index {
             display: flex;
             flex-direction: column;
-        }
-
-        .work-item {
-            display: flex;
-            gap: 28px;
-            padding: 20px 0;
-            border-bottom: 1px solid #e8e8e8;
-            cursor: pointer;
-            align-items: flex-start;
-            transition: opacity 0.2s;
-        }
-
-        .work-item:first-child {
             border-top: 1px solid #e8e8e8;
         }
 
-        .work-item:hover {
-            opacity: 0.65;
+        .work-row {
+            display: grid;
+            grid-template-columns: 62px 1fr 130px;
+            gap: 20px;
+            align-items: baseline;
+            padding: 22px 0;
+            border-bottom: 1px solid #e8e8e8;
+            cursor: pointer;
+            transition: background 0.15s;
         }
 
-        .work-thumb {
-            width: 180px;
-            height: 135px;
-            flex-shrink: 0;
-            overflow: hidden;
-            background: #f0f0f0;
+        .work-row:hover {
+            background: #fafafa;
         }
 
-        .work-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        .work-year {
+            font-family: ui-monospace, Menlo, monospace;
+            font-size: 12px;
+            color: #bbb;
+            letter-spacing: 0.5px;
         }
 
-        .work-thumb-pdf {
-            width: 180px;
-            height: 135px;
-            flex-shrink: 0;
-            overflow: hidden;
-            background: #f0f0f0;
-            position: relative;
-        }
-
-        .work-thumb-pdf iframe {
-            width: 900px;
-            height: 675px;
-            transform: scale(0.2);
-            transform-origin: top left;
-            pointer-events: none;
-            border: none;
-        }
-
-        .work-item-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 4px;
-        }
-
-        .work-item-info h3 {
-            font-size: 19px;
-            font-weight: 500;
-        }
-
-        .work-item-info p {
-            font-size: 18px;
+        .work-row h3 {
+            font-size: 26px;
             font-weight: 400;
-            color: #666;
+            letter-spacing: -0.3px;
+        }
+
+        .work-row p {
+            font-size: 16px;
+            color: #888;
+            margin-top: 6px;
+            max-width: 460px;
+            text-wrap: pretty;
+        }
+
+        .work-medium {
+            font-family: ui-monospace, Menlo, monospace;
+            font-size: 15px;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            text-align: right;
+        }
+
+        /* Hover preview */
+        .work-preview {
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            width: 300px;
+            pointer-events: none;
+            z-index: 500;
+        }
+
+        .work-preview img {
+            width: 100%;
+            display: block;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.14);
         }
 
         /* Contact */
@@ -259,23 +250,6 @@
             opacity: 0.7;
         }
 
-        .modal-caption {
-            padding: 14px 20px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .modal-caption h3 {
-            font-size: 19px;
-            font-weight: 500;
-        }
-
-        .modal-caption p {
-            font-size: 18px;
-            color: #666;
-            margin-top: 4px;
-            line-height: 1.6;
-        }
-
         /* Mobile */
         @media (max-width: 700px) {
             .layout {
@@ -312,10 +286,17 @@
                 padding: 20px 30px 60px;
             }
 
-            .work-thumb,
-            .work-thumb-pdf {
-                width: 120px;
-                height: 90px;
+            .work-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .work-medium {
+                text-align: left;
+            }
+
+            .work-preview {
+                display: none;
             }
 
             .modal {
@@ -334,29 +315,26 @@
                 <a href="#" onclick="showSection('resume', this)">resume</a>
                 <a href="#" onclick="showSection('contact', this)">contact</a>
             </nav>
-<!--             <div class="sidebar-footer">
-                <a href="mailto:your.email@example.com">your.email@example.com</a>
-            </div> -->
         </aside>
 
         <main class="content">
 
             <!-- About -->
             <div id="section-about" class="section active">
-                <p class="about-text">I'm a Master of Urban and Community Planning student at Pratt Institute's School 
-                    of Architecture, where studying planning within a design school has given me a strong grounding in 
+                <p class="about-text">I'm a Master of Urban and Community Planning student at Pratt Institute's School
+                    of Architecture, where studying planning within a design school has given me a strong grounding in
                     urban design alongside the analytical, advocacy, and policy side of the field. My interests range from
-                    housing development, municipal finance, and land use — 
-                    using data analysis tools to ask questions about affordability, development patterns, 
-                    and how cities allocate resources. I'm particularly interested in transit oriented development, 
-                    downtown revitalization, and the craft of physical planning: how master plans shape the long arc of a 
-                    city's growth and what it takes to translate policy into built form. 
-                    I'm drawn to work that lives at the boundary between rigorous analysis and spatial design: 
-                    parcel-level data, geospatial visualization, policy research. 
-                    I believe good data and good design can make planning more legible and more equitable. 
+                    housing development, municipal finance, and land use —
+                    using data analysis tools to ask questions about affordability, development patterns,
+                    and how cities allocate resources. I'm particularly interested in transit oriented development,
+                    downtown revitalization, and the craft of physical planning: how master plans shape the long arc of a
+                    city's growth and what it takes to translate policy into built form.
+                    I'm drawn to work that lives at the boundary between rigorous analysis and spatial design:
+                    parcel-level data, geospatial visualization, policy research.
+                    I believe good data and good design can make planning more legible and more equitable.
                     <br>
                     <br>
-                    When I'm not deep in a dataset, I'm thinking about architecture, watching or doing woodworking projects, 
+                    When I'm not deep in a dataset, I'm thinking about architecture, watching or doing woodworking projects,
                     and riding my bike through the city and on gravel roads that probably weren't meant for bikes.
                     <br>
                     <br>
@@ -366,100 +344,94 @@
 
             <!-- Work -->
             <div id="section-work" class="section">
-                <div class="work-list">
+                <div class="work-index">
 
-                    <div class="work-item" onclick="openModal('modal-fiscal')">
-                        <div class="work-thumb-pdf">
-                            <iframe src="samples/fiscal_impact.pdf#toolbar=0&navpanes=0&scrollbar=0&page=1"
-                                    title="Fiscal Impact Preview"></iframe>
-                        </div>
-                        <div class="work-item-info">
+                    <div class="work-row" onclick="openModal('modal-fiscal')">
+                        <span class="work-year">2026</span>
+                        <div>
                             <h3>Fiscal Impact Analysis</h3>
-                            <p>This fiscal impact analysis memo examines a proposed housing development on the site of a former college campus,
-                                projecting tax revenue, municipal service costs, and net fiscal outcomes for the host municipality while
-                                accounting for New York State's STAR (School Tax Relief) program. Names and locations have been changed for confidentiality. </p>
+                            <p>Tax revenue, service costs, and net fiscal outcome for housing on a former college campus, accounting for NY STAR.</p>
                         </div>
+                        <span class="work-medium">Econ Dev Analysis</span>
                     </div>
 
-                    <div class="work-item" onclick="openModal('modal-walkshed')">
-                        <div class="work-thumb">
-                            <img src="samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg" alt="Rockaway Peninsula Walkshed Map">
-                        </div>
-                        <div class="work-item-info">
+                    <div class="work-row" onclick="openModal('modal-walkshed')"
+                         onmouseenter="showPreview('samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg')"
+                         onmouseleave="hidePreview()">
+                        <span class="work-year">2026</span>
+                        <div>
                             <h3>Rockaway Peninsula Transit Access</h3>
-                            <p>A GIS analysis identifying vacant lots within a 0.5-mile walkshed and 0.5-mile Euclidean buffer of
-                                subway stations along the Rockaway Peninsula and Broad Channel. The comparison between network-based
-                                and straight-line areas reveals meaningful differences in which parcels are realistically
-                                accessible to transit, implications for where TOD investment is most viable.</p>
+                            <p>Vacant lots within a half-mile walkshed vs. Euclidean buffer of subway stations — where TOD is realistically viable.</p>
                         </div>
+                        <span class="work-medium">GIS</span>
                     </div>
 
-                    <div class="work-item" onclick="openModal('modal-section')">
-                        <div class="work-thumb">
-                            <img src="samples/Section_View.png" alt="East 12th Street Section View">
-                        </div>
-                        <div class="work-item-info">
+                    <div class="work-row" onclick="openModal('modal-section')"
+                         onmouseenter="showPreview('samples/Section_View.png')"
+                         onmouseleave="hidePreview()">
+                        <span class="work-year">2025</span>
+                        <div>
                             <h3>East 12th Street Section View</h3>
-                            <p>Street design study in the East Village, NYC. Hand-drawn then touched up in Adobe Illustrator. </p>
+                            <p>Street design study in the East Village. Hand-drawn, finished in Illustrator.</p>
                         </div>
+                        <span class="work-medium">Adobe Suite</span>
                     </div>
 
-                    <div class="work-item" onclick="openModal('modal-njgis')">
-                        <div class="work-thumb-pdf">
-                            <iframe src="samples/njgis.pdf#toolbar=0&navpanes=0&scrollbar=0&page=1"
-                                    title="NJ GIS Preview"></iframe>
-                        </div>
-                        <div class="work-item-info">
+                    <div class="work-row" onclick="openModal('modal-njgis')">
+                        <span class="work-year">2025</span>
+                        <div>
                             <h3>New Jersey GIS Showcase</h3>
-                            <p>Description.</p>
+                            <p>Selected mapping work across New Jersey municipalities.</p>
                         </div>
+                        <span class="work-medium">GIS</span>
                     </div>
 
-                    <div class="work-item" onclick="openModal('modal-jcoped')">
-                        <div class="work-thumb">
-                            <img src="samples/jc/jc_preview.png" alt="Jersey City Budget Op-Ed">
-                        </div>
-                        <div class="work-item-info">
+                    <div class="work-row" onclick="openModal('modal-jcoped')"
+                         onmouseenter="showPreview('samples/jc/jc_preview.png')"
+                         onmouseleave="hidePreview()">
+                        <span class="work-year">2026</span>
+                        <div>
                             <h3>Jersey City Budget Op-Ed</h3>
-                            <p>An op-ed on Jersey City's unique municipal budget problems amidst a development boom, written in early 2026.</p>
+                            <p>On Jersey City's municipal budget problems amidst a development boom.</p>
                         </div>
+                        <span class="work-medium">Op-Ed</span>
                     </div>
 
-                    <div class="work-item" onclick="openModal('modal-rhw')">
-                        <div class="work-thumb">
-                            <img src="samples/rhw/rhw_preview.png" alt="Red Hook West Community Visioning Report">
+                    <div class="work-row" onclick="openModal('modal-rhw')"
+                         onmouseenter="showPreview('samples/rhw/rhw_preview.png')"
+                         onmouseleave="hidePreview()">
+                        <span class="work-year">2025</span>
+                        <div>
+                            <h3>Red Hook West Community Visioning</h3>
+                            <p>Community visioning report for the Red Hook West campus.</p>
                         </div>
-                        <div class="work-item-info">
-                            <h3>Red Hook West Community Visioning Report</h3>
-                            <p>Description.</p>
-                        </div>
+                        <span class="work-medium">Community Engagement</span>
                     </div>
 
-                    <div class="work-item" onclick="window.location.href='wood.html'">
-                        <div class="work-thumb">
-                            <img src="samples/wood/dryfit.jpeg" alt="Woodworking">
+                    <div class="work-row" onclick="window.location.href='design_board.html'"
+                         onmouseenter="showPreview('samples/design_board/axonomorphic_scan.jpg')"
+                         onmouseleave="hidePreview()">
+                        <span class="work-year">2025</span>
+                        <div>
+                            <h3>Brentwood Design Board</h3>
+                            <p>A 14-acre parcel in Brentwood, LI reimagined as transit-oriented development.</p>
                         </div>
-                        <div class="work-item-info">
-                            <h3>woodworking</h3>
-                            <p>showing off!</p>
-                        </div>
+                        <span class="work-medium">Urban Design</span>
                     </div>
 
-                    <div class="work-item" onclick="window.location.href='design_board.html'">
-                        <div class="work-thumb">
-                            <img src="samples/design_board/axonomorphic_scan.jpg" alt="Design Board">
+                    <div class="work-row" onclick="window.location.href='wood.html'"
+                         onmouseenter="showPreview('samples/wood/dryfit.jpeg')"
+                         onmouseleave="hidePreview()">
+                        <span class="work-year">—</span>
+                        <div>
+                            <h3>Woodworking</h3>
+                            <p>Shop projects: joinery, glue-ups, chamfers.</p>
                         </div>
-                        <div class="work-item-info">
-                            <h3>Design Board</h3>
-                            <p> Contextual Urban Design Final Project — Design Board
-                                <br>
-                                Tasked with reimagining a 14-acre parcel into a Transit-Oriented Development in the hamlet of
-                                Brentwood, Long Island, NY in accordance to contextual design and planning practices.         
-                                </p>
-                        </div>
+                        <span class="work-medium">Making</span>
                     </div>
 
                 </div>
+                <div class="work-preview" id="work-preview"></div>
             </div>
 
             <!-- Resume -->
@@ -526,7 +498,6 @@
         </div>
     </div>
 
-
     <script>
         function showSection(name, el) {
             event.preventDefault();
@@ -536,7 +507,16 @@
             el.classList.add('active');
         }
 
+        function showPreview(src) {
+            document.getElementById('work-preview').innerHTML = '<img src="' + src + '" alt="">';
+        }
+
+        function hidePreview() {
+            document.getElementById('work-preview').innerHTML = '';
+        }
+
         function openModal(id) {
+            hidePreview();
             document.getElementById(id).classList.add('active');
             document.body.style.overflow = 'hidden';
         }
