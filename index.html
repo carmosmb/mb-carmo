@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mbcarmo — Portfolio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -19,13 +15,11 @@
             font-size: 19px;
         }
 
-        /* Layout */
-        .layout {
-            display: flex;
-            min-height: 100vh;
-        }
+        a { color: #000; }
+        a:hover { color: #666; }
 
-        /* Sidebar */
+        .layout { display: flex; min-height: 100vh; }
+
         .sidebar {
             width: 260px;
             flex-shrink: 0;
@@ -46,11 +40,7 @@
             white-space: nowrap;
         }
 
-        nav {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+        nav { display: flex; flex-direction: column; gap: 6px; }
 
         nav a {
             color: #aaa;
@@ -61,27 +51,8 @@
             transition: color 0.2s;
         }
 
-        nav a:hover,
-        nav a.active {
-            color: #000;
-        }
+        nav a:hover, nav a.active { color: #000; }
 
-        .sidebar-footer {
-            margin-top: auto;
-            font-size: 17px;
-            color: #aaa;
-        }
-
-        .sidebar-footer a {
-            color: #aaa;
-            text-decoration: none;
-        }
-
-        .sidebar-footer a:hover {
-            color: #000;
-        }
-
-        /* Main content */
         .content {
             margin-left: 260px;
             padding: 40px 60px 80px;
@@ -89,17 +60,9 @@
             width: 100%;
         }
 
-        /* Sections */
-        .section {
-            display: none;
-            padding-top: 4px;
-        }
+        .section { display: none; padding-top: 4px; }
+        .section.active { display: block; }
 
-        .section.active {
-            display: block;
-        }
-
-        /* About */
         .about-text {
             font-size: 19px;
             line-height: 1.8;
@@ -110,7 +73,6 @@
             text-wrap: pretty;
         }
 
-        /* Work — index layout */
         .work-index {
             display: flex;
             flex-direction: column;
@@ -128,9 +90,7 @@
             transition: background 0.15s;
         }
 
-        .work-row:hover {
-            background: #fafafa;
-        }
+        .work-row:hover { background: #fafafa; }
 
         .work-year {
             font-family: ui-monospace, Menlo, monospace;
@@ -162,7 +122,6 @@
             text-align: right;
         }
 
-        /* Hover preview */
         .work-preview {
             position: fixed;
             right: 40px;
@@ -178,7 +137,6 @@
             box-shadow: 0 18px 40px rgba(0,0,0,0.14);
         }
 
-        /* Contact */
         .contact-list {
             display: flex;
             flex-direction: column;
@@ -186,16 +144,9 @@
             font-size: 19px;
         }
 
-        .contact-list a {
-            color: #000;
-            text-decoration: none;
-        }
+        .contact-list a { color: #000; text-decoration: none; }
+        .contact-list a:hover { opacity: 0.5; }
 
-        .contact-list a:hover {
-            opacity: 0.5;
-        }
-
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -207,9 +158,7 @@
             padding: 40px;
         }
 
-        .modal.active {
-            display: flex;
-        }
+        .modal.active { display: flex; }
 
         .modal-inner {
             position: relative;
@@ -246,15 +195,10 @@
             padding: 4px 8px;
         }
 
-        .modal-close:hover {
-            opacity: 0.7;
-        }
+        .modal-close:hover { opacity: 0.7; }
 
-        /* Mobile */
         @media (max-width: 700px) {
-            .layout {
-                flex-direction: column;
-            }
+            .layout { flex-direction: column; }
 
             .sidebar {
                 position: relative;
@@ -267,41 +211,19 @@
                 flex-wrap: wrap;
             }
 
-            .site-name {
-                margin-bottom: 0;
-                width: 100%;
-            }
+            .site-name { margin-bottom: 0; width: 100%; }
 
-            nav {
-                flex-direction: row;
-                gap: 20px;
-            }
+            nav { flex-direction: row; gap: 20px; }
 
-            .sidebar-footer {
-                display: none;
-            }
+            .content { margin-left: 0; padding: 20px 30px 60px; }
 
-            .content {
-                margin-left: 0;
-                padding: 20px 30px 60px;
-            }
+            .work-row { grid-template-columns: 1fr; gap: 6px; }
 
-            .work-row {
-                grid-template-columns: 1fr;
-                gap: 6px;
-            }
+            .work-medium { text-align: left; }
 
-            .work-medium {
-                text-align: left;
-            }
+            .work-preview { display: none; }
 
-            .work-preview {
-                display: none;
-            }
-
-            .modal {
-                padding: 20px;
-            }
+            .modal { padding: 20px; }
         }
     </style>
 </head>
@@ -319,109 +241,38 @@
 
         <main class="content">
 
-            <!-- About -->
             <div id="section-about" class="section active">
-                <p class="about-text">I'm a Master of Urban and Community Planning student at Pratt Institute's School
-                    of Architecture, where studying planning within a design school has given me a strong grounding in
-                    urban design alongside the analytical, advocacy, and policy side of the field. My interests range from
-                    housing development, municipal finance, and land use —
-                    using data analysis tools to ask questions about affordability, development patterns,
-                    and how cities allocate resources. I'm particularly interested in transit oriented development,
-                    downtown revitalization, and the craft of physical planning: how master plans shape the long arc of a
-                    city's growth and what it takes to translate policy into built form.
-                    I'm drawn to work that lives at the boundary between rigorous analysis and spatial design:
-                    parcel-level data, geospatial visualization, policy research.
-                    I believe good data and good design can make planning more legible and more equitable.
+                <p class="about-text">I'm a Master of Urban and Community Planning student at Pratt Institute's School of Architecture, where studying has given me a strong grounding in urban design alongside the analytical, advocacy, and policy side of the field. My interests range from municipal finance, comprehensive planning, and form based codes. I'm drawn to work that connects all different disciplines:&nbsp; tech and rigorous quantitative analysis to spatial design/planning to community engagement.<br><br>Outside of planning, you can find me constantly looking at buildings, playing with maps, watching or doing woodworking projects, and riding my bike through the city and on gravel roads that probably weren't meant for bikes.
                     <br>
                     <br>
-                    When I'm not deep in a dataset, I'm thinking about architecture, watching or doing woodworking projects,
-                    and riding my bike through the city and on gravel roads that probably weren't meant for bikes.
-                    <br>
-                    <br>
-                    This Portfolio website is a constant WIP, a place to showcase my work as I progress through
-                    my studies and whatever I feel like showing off :-&rpar; </p>
+                    This Portfolio website is a constant WIP, a place to showcase my work as I progress through my studies and whatever I feel like showing off :-&rpar;</p>
             </div>
 
-            <!-- Work -->
             <div id="section-work" class="section">
                 <div class="work-index">
 
-                    <div class="work-row" onclick="openModal('modal-fiscal')">
-                        <span class="work-year">2026</span>
+                    <div class="work-row" onclick="window.location.href='gis.html'"
+                         onmouseenter="showPreview('samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg')" onmouseleave="hidePreview()">
+                        <span class="work-year">—</span>
                         <div>
-                            <h3>Fiscal Impact Analysis</h3>
-                            <p>Tax revenue, service costs, and net fiscal outcome for housing on a former college campus, accounting for NY STAR.</p>
-                        </div>
-                        <span class="work-medium">Econ Dev Analysis</span>
-                    </div>
-
-                    <div class="work-row" onclick="openModal('modal-walkshed')"
-                         onmouseenter="showPreview('samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg')"
-                         onmouseleave="hidePreview()">
-                        <span class="work-year">2026</span>
-                        <div>
-                            <h3>Rockaway Peninsula Transit Access</h3>
-                            <p>Vacant lots within a half-mile walkshed vs. Euclidean buffer of subway stations — where TOD is realistically viable.</p>
+                            <h3>GIS + Spatial Analysis</h3>
+                            <p>A select few examples of GIS projects I worked on in the past.</p>
                         </div>
                         <span class="work-medium">GIS</span>
                     </div>
 
-                    <div class="work-row" onclick="openModal('modal-section')"
-                         onmouseenter="showPreview('samples/Section_View.png')"
-                         onmouseleave="hidePreview()">
-                        <span class="work-year">2025</span>
+                    <div class="work-row" onclick="window.location.href='urban_design.html'"
+                         onmouseenter="showPreview('samples/design_board/preview.png')" onmouseleave="hidePreview()">
+                        <span class="work-year">—</span>
                         <div>
-                            <h3>East 12th Street Section View</h3>
-                            <p>Street design study in the East Village. Hand-drawn, finished in Illustrator.</p>
+                            <h3>Urban Design</h3>
+                            <p>Studio and studio-adjacent design work: the Brentwood transit-oriented design board and an East 12th Street section study.</p>
                         </div>
-                        <span class="work-medium">Adobe Suite</span>
-                    </div>
-
-                    <div class="work-row" onclick="openModal('modal-njgis')">
-                        <span class="work-year">2025</span>
-                        <div>
-                            <h3>New Jersey GIS Showcase</h3>
-                            <p>Selected mapping work across New Jersey municipalities.</p>
-                        </div>
-                        <span class="work-medium">GIS</span>
-                    </div>
-
-                    <div class="work-row" onclick="openModal('modal-jcoped')"
-                         onmouseenter="showPreview('samples/jc/jc_preview.png')"
-                         onmouseleave="hidePreview()">
-                        <span class="work-year">2026</span>
-                        <div>
-                            <h3>Jersey City Budget Op-Ed</h3>
-                            <p>On Jersey City's municipal budget problems amidst a development boom.</p>
-                        </div>
-                        <span class="work-medium">Op-Ed</span>
-                    </div>
-
-                    <div class="work-row" onclick="openModal('modal-rhw')"
-                         onmouseenter="showPreview('samples/rhw/rhw_preview.png')"
-                         onmouseleave="hidePreview()">
-                        <span class="work-year">2025</span>
-                        <div>
-                            <h3>Red Hook West Community Visioning</h3>
-                            <p>Community visioning report for the Red Hook West campus.</p>
-                        </div>
-                        <span class="work-medium">Community Engagement</span>
-                    </div>
-
-                    <div class="work-row" onclick="window.location.href='design_board.html'"
-                         onmouseenter="showPreview('samples/design_board/axonomorphic_scan.jpg')"
-                         onmouseleave="hidePreview()">
-                        <span class="work-year">2025</span>
-                        <div>
-                            <h3>Brentwood Design Board</h3>
-                            <p>A 14-acre parcel in Brentwood, LI reimagined as transit-oriented development.</p>
-                        </div>
-                        <span class="work-medium">Urban Design</span>
+                        <span class="work-medium">Design</span>
                     </div>
 
                     <div class="work-row" onclick="window.location.href='wood.html'"
-                         onmouseenter="showPreview('samples/wood/dryfit.jpeg')"
-                         onmouseleave="hidePreview()">
+                         onmouseenter="showPreview('samples/wood/shelf.jpeg')" onmouseleave="hidePreview()">
                         <span class="work-year">—</span>
                         <div>
                             <h3>Woodworking</h3>
@@ -430,16 +281,44 @@
                         <span class="work-medium">Making</span>
                     </div>
 
+                    <div class="work-row" onclick="openModal('modal-jcoped')"
+                         onmouseenter="showPreview('samples/jc/jc_preview.png')" onmouseleave="hidePreview()">
+                        <span class="work-year">2026</span>
+                        <div>
+                            <h3>Jersey City Budget Op-Ed</h3>
+                            <p>On Jersey City’s municipal budget problems amidst a development boom.</p>
+                        </div>
+                        <span class="work-medium">Op-Ed</span>
+                    </div>
+
+                    <div class="work-row" onclick="openModal('modal-rhw')"
+                         onmouseenter="showPreview('samples/rhw/rhw_preview.png')" onmouseleave="hidePreview()">
+                        <span class="work-year">2026</span>
+                        <div>
+                            <h3>Red Hook West Community Visioning</h3>
+                            <p>One of my Summer 2026 internship projects that I assisted with.</p>
+                        </div>
+                        <span class="work-medium">Community Engagement</span>
+                    </div>
+
+                    <div class="work-row" onclick="openModal('modal-fiscal')"
+                         onmouseenter="showPreview('samples/fiscal_preview.png')" onmouseleave="hidePreview()">
+                        <span class="work-year">2025</span>
+                        <div>
+                            <h3>Fiscal Impact Analysis</h3>
+                            <p>Tax revenue, service costs, and net fiscal outcome for housing on a former college campus, accounting for NY STAR.</p>
+                        </div>
+                        <span class="work-medium">Econ Dev Analysis</span>
+                    </div>
+
                 </div>
                 <div class="work-preview" id="work-preview"></div>
             </div>
 
-            <!-- Resume -->
             <div id="section-resume" class="section">
                 <iframe src="samples/resume.pdf" style="width:100%; height:85vh; border:none; display:block;"></iframe>
             </div>
 
-            <!-- Contact -->
             <div id="section-contact" class="section">
                 <div class="contact-list">
                     <a href="mailto:mcarmosi@pratt.edu">mcarmosi@pratt.edu</a>
@@ -450,39 +329,6 @@
         </main>
     </div>
 
-    <!-- Section View Modal -->
-    <div id="modal-section" class="modal" onclick="closeOnBackdrop(event, 'modal-section')">
-        <div class="modal-inner">
-            <button class="modal-close" onclick="closeModal('modal-section')">&times;</button>
-            <img src="samples/Section_View.png" alt="East 12th Street Section View">
-        </div>
-    </div>
-
-    <!-- Walkshed Map Modal -->
-    <div id="modal-walkshed" class="modal" onclick="closeOnBackdrop(event, 'modal-walkshed')">
-        <div class="modal-inner">
-            <button class="modal-close" onclick="closeModal('modal-walkshed')">&times;</button>
-            <img src="samples/GIS Vacant Lots Within Walkshed - Matthew Carmosino.jpg" alt="Rockaway Peninsula Walkshed Map">
-        </div>
-    </div>
-
-    <!-- Fiscal Impact PDF Modal -->
-    <div id="modal-fiscal" class="modal" onclick="closeOnBackdrop(event, 'modal-fiscal')">
-        <div class="modal-inner">
-            <button class="modal-close" onclick="closeModal('modal-fiscal')">&times;</button>
-            <iframe src="samples/fiscal_impact.pdf" title="Fiscal Impact Analysis"></iframe>
-        </div>
-    </div>
-
-    <!-- NJ GIS Modal -->
-    <div id="modal-njgis" class="modal" onclick="closeOnBackdrop(event, 'modal-njgis')">
-        <div class="modal-inner">
-            <button class="modal-close" onclick="closeModal('modal-njgis')">&times;</button>
-            <iframe src="samples/njgis.pdf" title="NJ GIS Showcase"></iframe>
-        </div>
-    </div>
-
-    <!-- JC Op-Ed Modal -->
     <div id="modal-jcoped" class="modal" onclick="closeOnBackdrop(event, 'modal-jcoped')">
         <div class="modal-inner">
             <button class="modal-close" onclick="closeModal('modal-jcoped')">&times;</button>
@@ -490,11 +336,17 @@
         </div>
     </div>
 
-    <!-- Red Hook West Modal -->
     <div id="modal-rhw" class="modal" onclick="closeOnBackdrop(event, 'modal-rhw')">
         <div class="modal-inner">
             <button class="modal-close" onclick="closeModal('modal-rhw')">&times;</button>
             <iframe src="samples/rhw/RHW-compressed.pdf" title="Red Hook West Community Visioning Report"></iframe>
+        </div>
+    </div>
+
+    <div id="modal-fiscal" class="modal" onclick="closeOnBackdrop(event, 'modal-fiscal')">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('modal-fiscal')">&times;</button>
+            <iframe src="samples/fiscal_impact.pdf" title="Fiscal Impact Analysis"></iframe>
         </div>
     </div>
 
@@ -527,9 +379,7 @@
         }
 
         function closeOnBackdrop(event, id) {
-            if (event.target === document.getElementById(id)) {
-                closeModal(id);
-            }
+            if (event.target === document.getElementById(id)) closeModal(id);
         }
 
         document.addEventListener('keydown', function(e) {

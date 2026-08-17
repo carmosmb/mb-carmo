@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Design — mbcarmo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            font-size: 14px;
+        }
+
+        header {
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e8e8e8;
+            margin-bottom: 40px;
+        }
+
+        .page-title { font-size: 15px; font-weight: 700; }
+
+        .back-link {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: #000; }
+
+        main { padding: 0 40px 80px; }
+
+        .section-head {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #000;
+            margin-bottom: 20px;
+        }
+
+        .section-head h2 {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .section-note {
+            font-size: 13px;
+            color: #aaa;
+            max-width: 620px;
+            text-wrap: pretty;
+        }
+
+        .gallery-item { cursor: pointer; }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            background: #f0f0f0;
+            transition: opacity 0.2s;
+        }
+
+        .gallery-item:hover img { opacity: 0.85; }
+
+        .gallery-item-label {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #aaa;
+            text-wrap: pretty;
+        }
+
+        .pdf-label { font-size: 13px; color: #aaa; margin-bottom: 12px; }
+
+        .pdf-viewer { width: 100%; height: 85vh; border: none; display: block; }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .lightbox.active { display: flex; }
+
+        .lightbox img { max-width: 100%; max-height: 90vh; object-fit: contain; }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 28px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover { opacity: 0.7; }
+
+        .groups { display: flex; flex-direction: column; gap: 48px; }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            header { padding: 20px 24px; }
+            main { padding: 0 24px 60px; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="page-title">urban design</span>
+        <a href="index.html" class="back-link">← work</a>
+    </header>
+
+    <main>
+        <div class="groups">
+
+            <section>
+                <div class="section-head">
+                    <h2>Transit Oriented Development</h2>
+                    <p class="section-note">Contextual Urban Design Studio Showcase Spring '26  ~  tasked with a reimagining 14-acre private parcel beside the MTA Brentwood station in Long Island, New York as a transit-oriented development. Exercised skills in sketching, adobe creative suite, and applying design principles taught throughout the course such as Gehl's Rules, and vernacular/contextual design.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox('samples/design_board/IMG_9143.jpeg')">
+                        <img src="samples/design_board/IMG_9143.jpeg" alt="board pin-up">
+                        <div class="gallery-item-label">board pin-up</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('samples/design_board/axonomorphic_scan.jpg')">
+                        <img src="samples/design_board/axonomorphic_scan.jpg" alt="axonometric">
+                        <div class="gallery-item-label">axonometric</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('samples/design_board/website_sketches.jpg')">
+                        <img src="samples/design_board/website_sketches.jpg" alt="typologies">
+                        <div class="gallery-item-label">typologies</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('samples/design_board/IMG_9611.jpeg')">
+                        <img src="samples/design_board/IMG_9611.jpeg" alt="conceptual diagramming">
+                        <div class="gallery-item-label">conceptual diagramming</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('samples/design_board/IMG_9618.jpeg')">
+                        <img src="samples/design_board/IMG_9618.jpeg" alt="early concept">
+                        <div class="gallery-item-label">early concept</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('samples/design_board/IMG_9613.jpeg')">
+                        <img src="samples/design_board/IMG_9613.jpeg" alt="streetscape perspective">
+                        <div class="gallery-item-label">streetscape perspective</div>
+                    </div>
+                </div>
+                <div style="margin-top: 32px;">
+                    <p class="pdf-label">Brentwood to the World — final design board (PDF)</p>
+                    <iframe class="pdf-viewer" src="samples/design_board/Carmosino_Matthew_PLAN723_DesignBoard.pdf" title="Design Board PDF"></iframe>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-head">
+                    <h2>Building Plan</h2>
+                    <p class="section-note">Urban Contextual Design — smaller scale plan of an approx. 10,000 sq ft parcel in downtown Irvington, NY. We were encouraged to create a building of our choice that had some sort of community programming, so I made a museum dedicated to the history along the grand Hudson river, with almost half the parcel dedicated to an open-air plaza with a kiosk (resembling the Hudson-Athens Lighthouse)</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox('samples/design_board/assign1_final.jpeg')">
+                        <img src="samples/design_board/assign1_final.jpeg" alt="plan, elevations &amp; sections">
+                        <div class="gallery-item-label">plan, elevations &amp; sections</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('samples/design_board/IMG_9619.jpeg')">
+                        <img src="samples/design_board/IMG_9619.jpeg" alt="station plaza axonometric">
+                        <div class="gallery-item-label">station plaza axonometric</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('samples/design_board/IMG_9620.jpeg')">
+                        <img src="samples/design_board/IMG_9620.jpeg" alt="could i have scanned all these drawings and touched them up a bit to be more pro">
+                        <div class="gallery-item-label">could i have scanned all these drawings and touched them up a bit to be more professional?? yes. BUT, I saw a golden opportunity to knock the dust off grandpa's old light table tucked away in my childhood basement and put it to use ~ i like the yellow-orange hue that comes through  ̄\_(ツ)_/ ̄</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-head">
+                    <h2>Other Drawings</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox('samples/design_board/section_view_e12.png')">
+                        <img src="samples/design_board/section_view_e12.png" alt="East 12th Street section view">
+                        <div class="gallery-item-label">East 12th Street section view</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
